@@ -1,0 +1,13 @@
+import './game.js';
+import './css/body.css';
+import './css/bomb.css';
+import './css/brick.css';
+import './css/door.css';
+import './css/enemy.css';
+import './css/floor.css';
+import './css/game-field.css';
+import './css/html.css';
+import './css/player.css';
+import './css/next-level.css';
+import './css/speed-slider.css';
+import './css/wall.css';

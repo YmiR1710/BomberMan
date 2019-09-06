@@ -1,0 +1,11 @@
+.brick#door{
+    background: url("./src/img/brick.png") 100% 100% no-repeat;;
+    background-size: cover;
+    background-position: center center;
+}
+
+#door.floor{
+    background: url("./src/img/door.png") 100% 100% no-repeat;;
+    background-size: cover;
+    background-position: center center;
+}
