@@ -113,7 +113,7 @@ const moveLeft = (block) => {
     game_field[coordinates[0]][coordinates[1]-1].className === "player" && block.className === "enemy" ? game_lost = true : {};
 };
 
-const explode_bomb = (bomb) => {
+const explode_bomb = (bomb, door) => {
     const block_destruction = (block) => {
         block.className === "brick"||block.className === "enemy" ? block.className = "floor" :
             block.className === "player" ? game_lost = true : {};
@@ -126,6 +126,7 @@ const explode_bomb = (bomb) => {
     block_destruction(game_field[coordinates[0]][coordinates[1]-1]);
     block_destruction(game_field[coordinates[0]][coordinates[1]+1]);
     game_field[coordinates[0]][coordinates[1]].removeAttribute("id");
+    door ? game_field[coordinates[0]][coordinates[1]].id = "door" : {};
 };
 
 const check_win = () => document.getElementsByClassName("enemy").length === 0
@@ -170,9 +171,11 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("click", () => {
     if (!cursor) {
+	let door = false;
         let coordinates = getCoordinates(document.getElementsByClassName("player")[0]);
+	get_game_field()[coordinates[0]][coordinates[1]].id === "door" ? door = true : {};
         get_game_field()[coordinates[0]][coordinates[1]].id = "bomb";
-        setTimeout(() => explode_bomb(get_game_field()[coordinates[0]][coordinates[1]]), 2000)
+        setTimeout(() => explode_bomb(get_game_field()[coordinates[0]][coordinates[1]], door), 2000)
     }
 });
 
